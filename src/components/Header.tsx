@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "@/assets/rapimed-logo.png";
 
 const navLinks = [
-  { label: "A Rapimed", href: "#sobre" },
-  { label: "Soluções", href: "#solucoes" },
-  { label: "Serviços", href: "#servicos" },
-  { label: "Contato", href: "#contato" },
+  { label: "A Rapimed", href: "/#sobre" },
+  { label: "Soluções", href: "/solucoes" },
+  { label: "Serviços", href: "/#servicos" },
+  { label: "Contato", href: "/#contato" },
 ];
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +24,76 @@ export function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleNavClick = (href: string) => {
+    setIsMobileMenuOpen(false);
+    
+    // If it's a hash link on the current page or home page
+    if (href.includes("#")) {
+      const [path, hash] = href.split("#");
+      
+      // If we're on the same page or it's the home page
+      if (path === "/" || path === "" || location.pathname === path) {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+  };
+
+  const renderNavLink = (link: { label: string; href: string }) => {
+    const isActive = location.pathname === link.href || 
+      (link.href === "/solucoes" && location.pathname === "/solucoes");
+
+    if (link.href.startsWith("/#")) {
+      // Hash link to home page section
+      if (location.pathname === "/") {
+        // On home page, use anchor
+        return (
+          <a
+            key={link.label}
+            href={link.href.replace("/", "")}
+            className={`text-foreground/80 hover:text-primary font-medium transition-colors relative group ${
+              isActive ? "text-primary" : ""
+            }`}
+            onClick={() => handleNavClick(link.href)}
+          >
+            {link.label}
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+          </a>
+        );
+      } else {
+        // On other page, use Link to navigate to home first
+        return (
+          <Link
+            key={link.label}
+            to={link.href}
+            className="text-foreground/80 hover:text-primary font-medium transition-colors relative group"
+          >
+            {link.label}
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+          </Link>
+        );
+      }
+    }
+
+    // Regular route link
+    return (
+      <Link
+        key={link.label}
+        to={link.href}
+        className={`text-foreground/80 hover:text-primary font-medium transition-colors relative group ${
+          isActive ? "text-primary" : ""
+        }`}
+      >
+        {link.label}
+        <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+          isActive ? "w-full" : "w-0 group-hover:w-full"
+        }`} />
+      </Link>
+    );
+  };
 
   return (
     <>
@@ -57,22 +129,13 @@ export function Header() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <a href="#" className="flex items-center">
+            <Link to="/" className="flex items-center">
               <img src={logo} alt="Rapimed" className="h-12 w-auto" />
-            </a>
+            </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="text-foreground/80 hover:text-primary font-medium transition-colors relative group"
-                >
-                  {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-                </a>
-              ))}
+              {navLinks.map((link) => renderNavLink(link))}
             </nav>
 
             {/* CTA Buttons */}
@@ -105,16 +168,45 @@ export function Header() {
               className="lg:hidden bg-background border-t border-border"
             >
               <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    className="text-foreground/80 hover:text-primary font-medium py-2 transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                ))}
+                {navLinks.map((link) => {
+                  if (link.href.startsWith("/#")) {
+                    if (location.pathname === "/") {
+                      return (
+                        <a
+                          key={link.label}
+                          href={link.href.replace("/", "")}
+                          className="text-foreground/80 hover:text-primary font-medium py-2 transition-colors"
+                          onClick={() => handleNavClick(link.href)}
+                        >
+                          {link.label}
+                        </a>
+                      );
+                    } else {
+                      return (
+                        <Link
+                          key={link.label}
+                          to={link.href}
+                          className="text-foreground/80 hover:text-primary font-medium py-2 transition-colors"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {link.label}
+                        </Link>
+                      );
+                    }
+                  }
+                  return (
+                    <Link
+                      key={link.label}
+                      to={link.href}
+                      className={`text-foreground/80 hover:text-primary font-medium py-2 transition-colors ${
+                        location.pathname === link.href ? "text-primary" : ""
+                      }`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
                 <div className="flex flex-col gap-3 pt-4 border-t border-border">
                   <Button variant="outline" className="w-full">
                     Portal do Sócio
