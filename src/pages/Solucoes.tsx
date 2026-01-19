@@ -130,7 +130,7 @@ function SolutionSection({
     <section ref={ref} className="py-20 relative overflow-hidden">
       {/* Background decoration */}
       <div className={`absolute inset-0 bg-gradient-to-br ${gradientColor} opacity-5`} />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <div className={`grid lg:grid-cols-2 gap-12 items-center ${reversed ? "lg:flex-row-reverse" : ""}`}>
           {/* Content */}
@@ -140,9 +140,9 @@ function SolutionSection({
             transition={{ duration: 0.8 }}
             className={reversed ? "lg:order-2" : ""}
           >
-            <div className={`inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r ${gradientColor} text-white text-sm font-medium mb-6`}>
-              <Icon className="w-5 h-5" />
-              <span>{title}</span>
+            <div className={`inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r ${gradientColor} text-sm font-medium mb-6`}>
+              <Icon className="w-5 h-5 text-white" />
+              <span className="text-white">{title}</span>
             </div>
 
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
@@ -228,44 +228,40 @@ export default function Solucoes() {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative pt-32 pb-20 overflow-hidden"
+        className="relative min-h-[500px] flex items-center overflow-hidden"
       >
-        {/* Background */}
-        <div className="absolute inset-0 gradient-hero" />
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=1920')] bg-cover bg-center opacity-10" />
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/medicine-and-health-care-concept-2026-01-07-01-35-55-utc.jpg"
+            alt="Soluções de saúde"
+            className="w-full h-full object-cover"
+          />
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#2a6365]/95 via-[#2a6365]/80 to-[#2a6365]/60" />
+        </div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 relative z-10 py-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center"
+            className="max-w-[45%]"
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-white/10 text-white/90 text-sm font-medium mb-6">
+            <span className="font-medium text-lg mb-2 block text-white/90 italic">
               soluções
             </span>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              Soluções Inteligentes para a{" "}
-              <span className="text-accent">Gestão de Saúde.</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+              Soluções Inteligentes para a Gestão de Saúde.
             </h1>
 
-            <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-white/90 max-w-2xl leading-relaxed">
               Unimos tecnologia, gestão disciplinada de pessoas e protocolos baseados em
               evidências para garantir que sua unidade de saúde opere com máxima eficiência e
               segurança assistencial.
             </p>
           </motion.div>
-        </div>
-
-        {/* Wave decoration */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
-              fill="hsl(var(--background))"
-            />
-          </svg>
         </div>
       </section>
 
@@ -277,7 +273,7 @@ export default function Solucoes() {
         highlights={["Cobertura Integral de Escalas", "Liderança Técnica Ativa"]}
         subtitle="Principais eixos de gestão e operação médica:"
         items={servicosMedicos}
-        imageUrl="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&h=600&fit=crop"
+        imageUrl="/images/surgeons-and-paramedic-in-mask-and-operating-patie-2026-01-07-00-31-12-utc.jpg"
         gradientColor="from-primary to-primary-dark"
       />
 
@@ -294,7 +290,7 @@ export default function Solucoes() {
         highlights={["Agilidade em Casos Críticos", "Segurança e Previsibilidade Assistencial"]}
         subtitle="Eixos estratégicos de governança e fluxo:"
         items={protocolos}
-        imageUrl="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&fit=crop"
+        imageUrl="/images/photo-1576091160550-2173dba999ef.jfif"
         gradientColor="from-accent to-amber-600"
         reversed
       />
@@ -312,35 +308,9 @@ export default function Solucoes() {
         highlights={["Simulações Realísticas e Práticas", "Certificação de Competências Críticas"]}
         subtitle="Programas de desenvolvimento e qualificação:"
         items={educacao}
-        imageUrl="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=600&fit=crop"
+        imageUrl="/images/medical-students-studying-human-anatomy-in-univers-2026-01-09-11-08-56-utc.jpg"
         gradientColor="from-emerald-500 to-teal-600"
       />
-
-      {/* CTA Section */}
-      <section className="py-20 bg-surface">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Pronto para transformar sua{" "}
-              <span className="gradient-text">gestão de saúde?</span>
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Entre em contato conosco e descubra como podemos ajudar sua unidade a alcançar excelência operacional.
-            </p>
-            <Button variant="hero" size="xl" className="bg-primary hover:bg-primary-dark text-white">
-              Fale Conosco
-              <ArrowRight className="w-5 h-5" />
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-
       <CareerCTA />
       <Footer />
     </div>

@@ -25,7 +25,7 @@ export function AboutSection() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=2070"
+                src="smiling-mature-doctor-with-stethoscope-portraying-2025-02-25-12-49-22-utc.jpg"
                 alt="Equipe médica rapimed"
                 className="w-full h-auto object-cover"
               />

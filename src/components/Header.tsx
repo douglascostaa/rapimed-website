@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, Mail, Facebook, Instagram, Linkedin } from "lucide-react";
+import { Menu, X, Phone, Mail } from "lucide-react";
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "@/assets/rapimed-logo.png";
 
 const navLinks = [
-  { label: "Sobre a Rapimed", href: "/#sobre" },
+  { label: "A Rapimed", href: "/sobre" },
   { label: "Soluções", href: "/solucoes" },
-  { label: "Serviços", href: "/#servicos" },
-  { label: "Contato", href: "/#contato" },
+  { label: "Contato", href: "/contato" },
+  { label: "Vagas Abertas", href: "/vagas" },
 ];
 
 export function Header() {
@@ -28,62 +29,20 @@ export function Header() {
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
 
-    // If it's a hash link on the current page or home page
-    if (href.includes("#")) {
-      const [path, hash] = href.split("#");
-
-      // If we're on the same page or it's the home page
-      if (path === "/" || path === "" || location.pathname === path) {
-        const element = document.getElementById(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }
-    }
+    // Scroll to top if navigating to a new page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const renderNavLink = (link: { label: string; href: string }) => {
-    const isActive = location.pathname === link.href ||
-      (link.href === "/solucoes" && location.pathname === "/solucoes");
+    const isActive = location.pathname === link.href;
 
-    if (link.href.startsWith("/#")) {
-      // Hash link to home page section
-      if (location.pathname === "/") {
-        // On home page, use anchor
-        return (
-          <a
-            key={link.label}
-            href={link.href.replace("/", "")}
-            className={`text-foreground/80 hover:text-primary font-medium transition-colors relative group ${isActive ? "text-primary" : ""
-              }`}
-            onClick={() => handleNavClick(link.href)}
-          >
-            {link.label}
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-          </a>
-        );
-      } else {
-        // On other page, use Link to navigate to home first
-        return (
-          <Link
-            key={link.label}
-            to={link.href}
-            className="text-foreground/80 hover:text-primary font-medium transition-colors relative group"
-          >
-            {link.label}
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-          </Link>
-        );
-      }
-    }
-
-    // Regular route link
     return (
       <Link
         key={link.label}
         to={link.href}
         className={`text-foreground/80 hover:text-primary font-medium transition-colors relative group ${isActive ? "text-primary" : ""
           }`}
+        onClick={() => handleNavClick(link.href)}
       >
         {link.label}
         <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"
@@ -109,13 +68,13 @@ export function Header() {
           </div>
           <div className="flex items-center gap-4">
             <a href="https://www.facebook.com/rapimedsaude/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity" aria-label="Facebook">
-              <Facebook className="w-4 h-4" />
+              <FaFacebookF className="w-4 h-4" />
             </a>
             <a href="https://www.instagram.com/rapimedsaude/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity" aria-label="Instagram">
-              <Instagram className="w-4 h-4" />
+              <FaInstagram className="w-4 h-4" />
             </a>
             <a href="http://br.linkedin.com/company/rapimed" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity" aria-label="LinkedIn">
-              <Linkedin className="w-4 h-4" />
+              <FaLinkedinIn className="w-4 h-4" />
             </a>
           </div>
         </div>
@@ -142,12 +101,15 @@ export function Header() {
 
             {/* CTA Buttons */}
             <div className="hidden lg:flex items-center gap-4">
-              <Button variant="outline" size="default">
-                Portal do Sócio
-              </Button>
-              <Button size="default">
-                Vagas Abertas
-              </Button>
+              <a
+                href="https://portal.rapimed.com.br/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline" size="default">
+                  Portal do Sócio
+                </Button>
+              </a>
             </div>
 
             {/* Mobile Menu Toggle */}

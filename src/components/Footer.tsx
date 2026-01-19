@@ -1,118 +1,157 @@
-import { Facebook, Instagram, Linkedin, MessageCircle, Phone, Mail } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import logo from "@/assets/rapimed-logo.png";
 
-const footerLinks = {
-  navegacao: [
-    { label: "Início", href: "#" },
-    { label: "A Rapimed", href: "#sobre" },
-    { label: "Soluções", href: "#solucoes" },
-    { label: "Serviços", href: "#servicos" },
-    { label: "Contato", href: "#contato" },
-  ],
-  acesso: [
-    { label: "Portal do Sócio", href: "#" },
-    { label: "Vagas Abertas", href: "#" },
-  ],
-};
+const menuLinks = [
+  { label: "início", href: "/" },
+  { label: "a rapimed", href: "/sobre" },
+  { label: "soluções", href: "/solucoes" },
+  { label: "contato", href: "/contato" },
+  { label: "portal do sócio", href: "#" },
+  { label: "vagas abertas", href: "/vagas" },
+];
+
+const solucoesLinks = [
+  { label: "serviços médicos", href: "/solucoes" },
+  { label: "protocolos e governança", href: "/solucoes" },
+  { label: "educação continuada", href: "/solucoes" },
+];
 
 const socialLinks = [
-  { icon: Facebook, href: "https://www.facebook.com/rapimedsaude/", label: "Facebook" },
-  { icon: Instagram, href: "https://www.instagram.com/rapimedsaude/", label: "Instagram" },
-  { icon: Linkedin, href: "http://br.linkedin.com/company/rapimed", label: "LinkedIn" },
-  { icon: MessageCircle, href: "https://wa.me/5551998210110", label: "WhatsApp" },
+  { icon: FaFacebookF, href: "https://www.facebook.com/rapimedsaude/", label: "Facebook" },
+  { icon: FaInstagram, href: "https://www.instagram.com/rapimedsaude/", label: "Instagram" },
+  { icon: FaLinkedinIn, href: "http://br.linkedin.com/company/rapimed", label: "LinkedIn" },
+  { icon: FaWhatsapp, href: "https://wa.me/5551998210110", label: "WhatsApp" },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <footer className="bg-[#2a6365] text-white">
+      <div className="container mx-auto px-4 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
           {/* Brand */}
-          <div className="lg:col-span-2">
-            <img src={logo} alt="Rapimed" className="h-12 w-auto mb-6 brightness-0 invert" />
-            <p className="text-white/80 max-w-md mb-6 leading-relaxed">
-              Transformando a saúde hospitalar e municipal com gestão inteligente, 
-              protocolos baseados em IA e capacitação contínua do corpo clínico.
+          <div>
+            <img src={logo} alt="Rapimed" className="h-10 w-auto mb-4 brightness-0 invert" />
+            <p className="text-white/80 text-base leading-relaxed mb-4">
+              Especialistas em gestão de escalas, protocolos clínicos e educação continuada. Referência em governança clínica para municípios e hospitais.
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-2">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+                  className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-300"
                   aria-label={social.label}
                 >
-                  <social.icon className="w-5 h-5" />
+                  <social.icon className="w-4 h-4" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Navigation */}
-          <div>
-            <h4 className="text-lg font-bold mb-6">Navegação</h4>
-            <ul className="space-y-3">
-              {footerLinks.navegacao.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-white/70 hover:text-white transition-colors"
+          {/* Menu */}
+          <div className="lg:justify-self-center">
+            <h4 className="text-lg font-bold mb-4 uppercase tracking-wide">Menu</h4>
+            <ul className="space-y-2">
+              {menuLinks.map((link) => (
+                <li key={link.label} className="flex items-center gap-2">
+                  <span className="text-white/50">›</span>
+                  <Link
+                    to={link.href}
+                    className="text-white/90 hover:text-white transition-colors text-base font-medium"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Soluções */}
           <div>
-            <h4 className="text-lg font-bold mb-6">Contato</h4>
+            <h4 className="text-lg font-bold mb-4 uppercase tracking-wide">Soluções</h4>
+            <ul className="space-y-2">
+              {solucoesLinks.map((link) => (
+                <li key={link.label} className="flex items-center gap-2">
+                  <span className="text-white/50">›</span>
+                  <Link
+                    to={link.href}
+                    className="text-white/90 hover:text-white transition-colors text-base font-medium"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contato */}
+          <div>
+            <h4 className="text-lg font-bold mb-4 uppercase tracking-wide">Contato</h4>
             <ul className="space-y-4">
               <li>
                 <a
                   href="tel:5199524-8614"
-                  className="flex items-center gap-3 text-white/70 hover:text-white transition-colors"
+                  className="flex items-start gap-3 text-white hover:opacity-80 transition-colors"
                 >
-                  <Phone className="w-5 h-5" />
-                  (51) 99524-8614
+                  <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="block text-sm text-white">Telefone</span>
+                    <span className="font-light text-white">(51) 99524-8614</span>
+                  </div>
                 </a>
               </li>
               <li>
                 <a
                   href="mailto:contato@rapimed.com.br"
-                  className="flex items-center gap-3 text-white/70 hover:text-white transition-colors"
+                  className="flex items-start gap-3 text-white hover:opacity-80 transition-colors"
                 >
-                  <Mail className="w-5 h-5" />
-                  contato@rapimed.com.br
+                  <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="block text-sm text-white">Email</span>
+                    <span className="font-light text-white">contato@rapimed.com.br</span>
+                  </div>
                 </a>
               </li>
             </ul>
-            <div className="mt-6 space-y-2">
-              {footerLinks.acesso.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="block text-white/70 hover:text-white transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
           </div>
+
         </div>
       </div>
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-white/60">
-            <p>© 2024 Rapimed. Todos os direitos reservados.</p>
-            <div className="flex gap-6">
-              <a href="#" className="hover:text-white transition-colors">Política de Privacidade</a>
-              <a href="#" className="hover:text-white transition-colors">Termos de Uso</a>
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-white/60">
+            {/* Left - Bahtech Logo */}
+            <a
+              href="https://bahtech.com.br/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+            >
+              <img
+                src="/images/bahtech_logotipo_negativo.png"
+                alt="Bahtech"
+                className="h-5 w-auto"
+              />
+            </a>
+
+            {/* Center - Copyright */}
+            <p className="text-center text-white">© 2026 Rapimed — Gestão em Saúde. Todos os direitos reservados.</p>
+
+            {/* Right - Links */}
+            <div className="flex gap-4">
+              <a href="#" className="text-white hover:opacity-80 transition-colors">Política de Privacidade</a>
+              <a href="#" className="text-white hover:opacity-80 transition-colors">Termos de Uso</a>
             </div>
           </div>
         </div>

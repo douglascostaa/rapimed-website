@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Globe, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -16,8 +16,8 @@ export function ContactSection() {
           {/* Contact Info Side */}
           <div className="lg:col-span-2 bg-primary text-primary-foreground p-10 flex flex-col justify-between">
             <div>
-              <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-sm font-medium mb-6">
-                Fale Conosco
+              <span className="text-white/100 font-medium text-lg italic mb-4 block">
+                fale conosco
               </span>
               <h2 className="text-3xl font-bold mb-4">Entre em contato</h2>
               <p className="text-primary-foreground/80 mb-8">
@@ -32,7 +32,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg">Telefone</h3>
-                  <p className="text-primary-foreground/80">(51) 99821-0110</p>
+                  <p className="text-primary-foreground/80">(51) 99524-8614</p>
                 </div>
               </div>
 
@@ -46,15 +46,6 @@ export function ContactSection() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-lg bg-white/10 shrink-0">
-                  <Globe className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg">Website</h3>
-                  <p className="text-primary-foreground/80">www.rapimed.com.br</p>
-                </div>
-              </div>
 
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-lg bg-white/10 shrink-0">
@@ -92,7 +83,7 @@ export function ContactSection() {
                 <Textarea
                   id="message"
                   placeholder="Como podemos ajudar?"
-                  className="min-h-[150px] bg-secondary/50 resize-none"
+                  className="min-h-[80px] bg-secondary/50 resize-none"
                 />
               </div>
 
