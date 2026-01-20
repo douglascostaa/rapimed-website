@@ -9,7 +9,7 @@ export default function About() {
     return (
         <div className="min-h-screen bg-background">
             <Header />
-            <main className="pt-20">
+            <main>
                 {/* Hero Section */}
                 <section className="relative py-20 bg-primary text-primary-foreground overflow-hidden">
                     <div className="container mx-auto px-4 relative z-10">
@@ -19,7 +19,7 @@ export default function About() {
                             transition={{ duration: 0.8 }}
                             className="max-w-3xl mx-auto text-center"
                         >
-                            <h1 className="text-4xl md:text-5xl font-bold mb-6">A Rapimed</h1>
+                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">A Rapimed</h1>
                             <p className="text-xl text-primary-foreground/90">
                                 Inovação e excelência na gestão de saúde.
                             </p>
@@ -78,11 +78,15 @@ export default function About() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.1 }}
-                                className="bg-background p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+                                whileHover={{ y: -8, scale: 1.02 }}
+                                className="bg-background p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
                             >
-                                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                                <motion.div
+                                    className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6"
+                                    whileHover={{ scale: 1.15, rotate: 10 }}
+                                >
                                     <Rocket className="w-6 h-6 text-primary" />
-                                </div>
+                                </motion.div>
                                 <h3 className="text-xl font-bold mb-4">Missão</h3>
                                 <p className="text-muted-foreground">
                                     Levar equipes seguras e soluções em saúde de forma rápida e qualificada para as regiões Sul e Sudeste do Brasil.
@@ -95,11 +99,15 @@ export default function About() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2 }}
-                                className="bg-background p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+                                whileHover={{ y: -8, scale: 1.02 }}
+                                className="bg-background p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
                             >
-                                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                                <motion.div
+                                    className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6"
+                                    whileHover={{ scale: 1.15, rotate: 10 }}
+                                >
                                     <Target className="w-6 h-6 text-primary" />
-                                </div>
+                                </motion.div>
                                 <h3 className="text-xl font-bold mb-4">Visão</h3>
                                 <p className="text-muted-foreground">
                                     Triplicar o número de horas de atendimento até dezembro de 2026.
@@ -112,11 +120,15 @@ export default function About() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.3 }}
-                                className="bg-background p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+                                whileHover={{ y: -8, scale: 1.02 }}
+                                className="bg-background p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
                             >
-                                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                                <motion.div
+                                    className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6"
+                                    whileHover={{ scale: 1.15, rotate: 10 }}
+                                >
                                     <Award className="w-6 h-6 text-primary" />
-                                </div>
+                                </motion.div>
                                 <h3 className="text-xl font-bold mb-4">Valores</h3>
                                 <p className="text-muted-foreground">
                                     Responsabilidade, agilidade, qualidade, ética e senso de dono.
@@ -129,11 +141,15 @@ export default function About() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.4 }}
-                                className="bg-background p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+                                whileHover={{ y: -8, scale: 1.02 }}
+                                className="bg-background p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
                             >
-                                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                                <motion.div
+                                    className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6"
+                                    whileHover={{ scale: 1.15, rotate: 10 }}
+                                >
                                     <Heart className="w-6 h-6 text-primary" />
-                                </div>
+                                </motion.div>
                                 <h3 className="text-xl font-bold mb-4">Propósito</h3>
                                 <p className="text-muted-foreground">
                                     Levar saúde de qualidade a milhares de pessoas, assim como entregar inteligência estratégica para os gestores públicos e privados, com segurança, tranquilidade, agilidade e organização.

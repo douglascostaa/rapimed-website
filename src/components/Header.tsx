@@ -54,31 +54,65 @@ export function Header() {
   return (
     <>
       {/* Top Bar */}
-      <div className="hidden md:block bg-primary text-primary-foreground py-2">
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="hidden md:block bg-primary text-primary-foreground py-2"
+      >
         <div className="container mx-auto px-4 flex justify-between items-center text-sm">
           <div className="flex items-center gap-6">
-            <a href="mailto:contato@rapimed.com.br" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <motion.a
+              href="mailto:contato@rapimed.com.br"
+              className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+              whileHover={{ x: 3 }}
+            >
               <Mail className="w-4 h-4" />
               contato@rapimed.com.br
-            </a>
-            <a href="tel:5199821-0110" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            </motion.a>
+            <motion.a
+              href="tel:5199821-0110"
+              className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+              whileHover={{ x: 3 }}
+            >
               <Phone className="w-4 h-4" />
               (51) 99821-0110
-            </a>
+            </motion.a>
           </div>
           <div className="flex items-center gap-4">
-            <a href="https://www.facebook.com/rapimedsaude/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity" aria-label="Facebook">
+            <motion.a
+              href="https://www.facebook.com/rapimedsaude/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+              aria-label="Facebook"
+              whileHover={{ scale: 1.2, rotate: 5 }}
+            >
               <FaFacebookF className="w-4 h-4" />
-            </a>
-            <a href="https://www.instagram.com/rapimedsaude/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity" aria-label="Instagram">
+            </motion.a>
+            <motion.a
+              href="https://www.instagram.com/rapimedsaude/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+              aria-label="Instagram"
+              whileHover={{ scale: 1.2, rotate: 5 }}
+            >
               <FaInstagram className="w-4 h-4" />
-            </a>
-            <a href="http://br.linkedin.com/company/rapimed" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity" aria-label="LinkedIn">
+            </motion.a>
+            <motion.a
+              href="http://br.linkedin.com/company/rapimed"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+              aria-label="LinkedIn"
+              whileHover={{ scale: 1.2, rotate: 5 }}
+            >
               <FaLinkedinIn className="w-4 h-4" />
-            </a>
+            </motion.a>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Main Header */}
       <header
@@ -91,7 +125,13 @@ export function Header() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center">
-              <img src={logo} alt="Rapimed" className="h-12 w-auto" />
+              <motion.img
+                src={logo}
+                alt="Rapimed"
+                className="h-12 w-auto"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              />
             </Link>
 
             {/* Desktop Navigation */}
@@ -126,58 +166,63 @@ export function Header() {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden bg-background border-t border-border"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="lg:hidden bg-white shadow-lg border-t border-gray-100"
             >
-              <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
-                {navLinks.map((link) => {
-                  if (link.href.startsWith("/#")) {
-                    if (location.pathname === "/") {
-                      return (
-                        <a
-                          key={link.label}
-                          href={link.href.replace("/", "")}
-                          className="text-foreground/80 hover:text-primary font-medium py-2 transition-colors"
+              <nav className="container mx-auto px-6 py-8">
+                {/* Navigation Links */}
+                <div className="space-y-1">
+                  {navLinks.map((link, index) => {
+                    const isActive = location.pathname === link.href;
+                    return (
+                      <motion.div
+                        key={link.label}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.05 }}
+                      >
+                        <Link
+                          to={link.href}
+                          className={`flex items-center justify-between py-4 px-4 rounded-xl text-base font-semibold transition-all ${isActive
+                            ? "bg-primary/10 text-primary"
+                            : "text-gray-800 hover:bg-gray-50 hover:text-primary"
+                            }`}
                           onClick={() => handleNavClick(link.href)}
                         >
-                          {link.label}
-                        </a>
-                      );
-                    } else {
-                      return (
-                        <Link
-                          key={link.label}
-                          to={link.href}
-                          className="text-foreground/80 hover:text-primary font-medium py-2 transition-colors"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          {link.label}
+                          <span>{link.label}</span>
+                          {isActive && (
+                            <div className="w-2 h-2 rounded-full bg-primary" />
+                          )}
                         </Link>
-                      );
-                    }
-                  }
-                  return (
-                    <Link
-                      key={link.label}
-                      to={link.href}
-                      className={`text-foreground/80 hover:text-primary font-medium py-2 transition-colors ${location.pathname === link.href ? "text-primary" : ""
-                        }`}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  );
-                })}
-                <div className="flex flex-col gap-3 pt-4 border-t border-border">
-                  <Button variant="outline" className="w-full">
-                    Portal do Sócio
-                  </Button>
-                  <Button className="w-full">
-                    Vagas Abertas
-                  </Button>
+                      </motion.div>
+                    );
+                  })}
                 </div>
+
+                {/* CTA Button */}
+                <motion.div
+                  className="mt-6 pt-6 border-t border-gray-100"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <a
+                    href="https://portal.rapimed.com.br/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <Button
+                      variant="outline"
+                      className="w-full h-12 text-base font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-white"
+                    >
+                      Portal do Sócio
+                    </Button>
+                  </a>
+                </motion.div>
               </nav>
             </motion.div>
           )}

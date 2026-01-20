@@ -38,7 +38,7 @@ export function WhyChooseSection() {
     const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
 
     return (
-        <section id="solucoes" className="py-24 bg-[#f8fcfc] relative overflow-hidden">
+        <section id="solucoes" className="py-16 md:py-24 bg-[#f8fcfc] relative overflow-hidden">
             {/* Decorative background curve */}
             <div className="absolute top-0 right-0 w-1/2 h-full bg-[#e6f7f5] rounded-l-full opacity-50 -z-10 translate-x-1/3" />
 
@@ -62,9 +62,13 @@ export function WhyChooseSection() {
                                 }}
                             />
                             {/* Icon Badge */}
-                            <div className="absolute top-6 right-6 bg-[#4ed1c5] p-4 rounded-full shadow-lg">
+                            <motion.div
+                                className="absolute top-6 right-6 bg-[#4ed1c5] p-4 rounded-full shadow-lg"
+                                animate={{ y: [0, -8, 0] }}
+                                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                            >
                                 <Stethoscope className="w-8 h-8 text-white" />
-                            </div>
+                            </motion.div>
                         </div>
                     </motion.div>
 
@@ -124,7 +128,7 @@ export function WhyChooseSection() {
                                             height: expandedIndex === index ? "auto" : 0,
                                             opacity: expandedIndex === index ? 1 : 0,
                                         }}
-                                        transition={{ duration: 0.3 }}
+                                        transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
                                         className="overflow-hidden"
                                     >
                                         <div className="px-5 pb-5 pt-0">

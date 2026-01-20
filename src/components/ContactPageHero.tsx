@@ -16,7 +16,7 @@ const socialLinks = [
 
 export function ContactPageHero() {
     return (
-        <section className="relative min-h-[700px] flex items-center overflow-hidden pt-20">
+        <section className="relative min-h-[600px] md:min-h-[700px] flex items-center overflow-hidden pt-20">
             {/* Background with image positioned to the left */}
             <div className="absolute inset-0 z-0">
                 {/* Solid color background */}
@@ -47,7 +47,7 @@ export function ContactPageHero() {
                         transition={{ duration: 0.6 }}
                         className="bg-white rounded-3xl shadow-2xl p-8 lg:p-10"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
                             Entre em contato
                         </h2>
                         <p className="text-gray-500 mb-6">

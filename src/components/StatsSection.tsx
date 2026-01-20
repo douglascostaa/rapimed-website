@@ -32,15 +32,20 @@ export function StatsSection() {
                     {stats.map((stat, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1, duration: 0.5 }}
+                            transition={{ delay: index * 0.15, duration: 0.6 }}
                             viewport={{ once: true }}
-                            className="text-center flex flex-col items-center gap-4"
+                            whileHover={{ y: -6, scale: 1.02 }}
+                            className="text-center flex flex-col items-center gap-4 cursor-pointer"
                         >
-                            <div className="p-4 rounded-full bg-white/10 mb-2">
+                            <motion.div
+                                className="p-4 rounded-full bg-white/10 mb-2"
+                                whileHover={{ scale: 1.15, rotate: 10 }}
+                                transition={{ type: "spring", stiffness: 300 }}
+                            >
                                 <stat.icon className="w-8 h-8" />
-                            </div>
+                            </motion.div>
                             <h3 className="text-4xl font-bold">{stat.value}</h3>
                             <p className="text-sm md:text-base text-primary-foreground/80 font-medium max-w-[200px]">
                                 {stat.label}

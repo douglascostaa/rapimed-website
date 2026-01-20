@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { 
-  CalendarClock, 
-  UserCog, 
-  AlertTriangle, 
-  Users, 
-  Building2, 
+import {
+  CalendarClock,
+  UserCog,
+  AlertTriangle,
+  Users,
+  Building2,
   Workflow,
   BadgeCheck,
   HeartPulse,
@@ -73,7 +73,7 @@ export function ServicesSection() {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <section id="servicos" className="py-24 bg-background">
+    <section id="servicos" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div
@@ -91,7 +91,7 @@ export function ServicesSection() {
             <span className="gradient-text">Transformar Operações de Saúde.</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Oferecemos uma ampla gama de serviços modulares que garantem previsibilidade 
+            Oferecemos uma ampla gama de serviços modulares que garantem previsibilidade
             financeira, segurança jurídica e satisfação total do paciente.
           </p>
         </motion.div>
@@ -103,19 +103,23 @@ export function ServicesSection() {
               key={service.title}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.1 + index * 0.05, duration: 0.5 }}
+              transition={{ delay: 0.1 + index * 0.08, duration: 0.5 }}
+              whileHover={{ y: -8, scale: 1.02 }}
               className="group bg-card rounded-2xl p-6 border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-300 cursor-pointer"
             >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+              <motion.div
+                className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary transition-all duration-300"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+              >
                 <service.icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors" />
-              </div>
+              </motion.div>
               <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                 {service.title}
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                 {service.description}
               </p>
-              <div className="flex items-center gap-2 text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="flex items-center gap-2 text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-all transform translate-x-0 group-hover:translate-x-1">
                 Saiba mais
                 <ArrowRight className="w-4 h-4" />
               </div>

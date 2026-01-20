@@ -4,7 +4,7 @@ import { Stethoscope, Users } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <div className="relative min-h-[600px] lg:min-h-[700px] flex items-center overflow-hidden">
+    <div className="relative min-h-[550px] md:min-h-[600px] lg:min-h-[700px] flex items-center overflow-hidden">
       {/* Background with image positioned to the right */}
       <div className="absolute inset-0 z-0">
         {/* Solid color background on left side */}
@@ -12,7 +12,7 @@ export function HeroSection() {
 
         {/* Image positioned to the right */}
         <div
-          className="absolute top-0 right-0 bottom-0 w-full lg:w-[75%] bg-cover bg-center bg-no-repeat"
+          className="absolute top-0 right-0 bottom-0 w-full lg:w-[55%] bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: 'url("/images/medical-face-and-woman-or-doctor-with-crossed-arm-2025-04-05-22-52-25-utc.jpg")',
           }}
@@ -25,38 +25,64 @@ export function HeroSection() {
       <div className="container mx-auto px-4 relative z-10 py-12">
         {/* White Card Container */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="bg-white/95 backdrop-blur-sm p-8 md:p-12 rounded-3xl shadow-2xl max-w-2xl border border-gray-100"
         >
           {/* Rapimed Logo */}
-          <div className="flex items-center gap-2 mb-8">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="flex items-center gap-2 mb-8"
+          >
             <img src="/images/NOVA-RAPIMED.png" alt="Rapimed" className="h-8" />
-          </div>
+          </motion.div>
 
           {/* Title */}
-          <h1 className="text-4xl md:text-5xl font-bold italic text-gray-900 mb-4 leading-tight">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="text-4xl md:text-5xl font-bold italic text-gray-900 mb-4 leading-tight"
+          >
             Gestão médica inteligente
-          </h1>
+          </motion.h1>
 
           {/* Subtitle */}
-          <h2 className="text-xl md:text-2xl font-medium italic text-gray-800 mb-6">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="text-xl md:text-2xl font-medium italic text-gray-800 mb-6"
+          >
             Eficiência operacional e Segurança assistencial.
-          </h2>
+          </motion.h2>
 
           {/* Description */}
-          <p className="text-gray-500 text-base md:text-lg mb-10 leading-relaxed">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+            className="text-gray-500 text-base md:text-lg mb-10 leading-relaxed"
+          >
             Atuamos em todo o Brasil transformando a saúde hospitalar e municipal com
             escalas 100% cobertas, protocolos baseados em IA e capacitação contínua do corpo
             clínico.
-          </p>
+          </motion.p>
 
           {/* Feature Cards */}
           <div className="grid sm:grid-cols-2 gap-6">
             {/* Card 1 - Soluções */}
             <Link to="/solucoes" className="group">
-              <div className="flex items-start gap-4 p-5 rounded-xl bg-gray-50 border border-gray-200/50 hover:shadow-lg hover:border-[#2a6365]/30 transition-all">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.5 }}
+                whileHover={{ y: -6, scale: 1.02 }}
+                className="flex items-start gap-4 p-5 rounded-xl bg-gray-50 border border-gray-200/50 hover:shadow-xl hover:border-[#2a6365]/30 transition-all"
+              >
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#2a6365]/10 flex items-center justify-center group-hover:bg-[#2a6365]/20 transition-colors">
                   <Stethoscope className="w-6 h-6 text-[#2a6365]" />
                 </div>
@@ -68,12 +94,18 @@ export function HeroSection() {
                     Descubra como eliminamos furos em escalas e reduzimos custos operacionais.
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </Link>
 
             {/* Card 2 - Carreira */}
             <Link to="/vagas" className="group">
-              <div className="flex items-start gap-4 p-5 rounded-xl bg-gray-50 border border-gray-200/50 hover:shadow-lg hover:border-[#2a6365]/30 transition-all">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 0.5 }}
+                whileHover={{ y: -6, scale: 1.02 }}
+                className="flex items-start gap-4 p-5 rounded-xl bg-gray-50 border border-gray-200/50 hover:shadow-xl hover:border-[#2a6365]/30 transition-all"
+              >
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#2a6365]/10 flex items-center justify-center group-hover:bg-[#2a6365]/20 transition-colors">
                   <Users className="w-6 h-6 text-[#2a6365]" />
                 </div>
@@ -85,7 +117,7 @@ export function HeroSection() {
                     Venha fazer parte de um corpo clínico de elite com suporte tecnológico e gestão eficiente.
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </Link>
           </div>
         </motion.div>

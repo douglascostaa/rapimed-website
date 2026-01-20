@@ -26,36 +26,63 @@ export function ContactSection() {
             </div>
 
             <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-lg bg-white/10 shrink-0">
+              <motion.div
+                className="flex items-start gap-4"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
+                <motion.div
+                  className="p-3 rounded-lg bg-white/10 shrink-0"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                >
                   <Phone className="w-6 h-6" />
-                </div>
+                </motion.div>
                 <div>
                   <h3 className="font-semibold text-lg">Telefone</h3>
                   <p className="text-primary-foreground/80">(51) 99524-8614</p>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-lg bg-white/10 shrink-0">
+              <motion.div
+                className="flex items-start gap-4"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+              >
+                <motion.div
+                  className="p-3 rounded-lg bg-white/10 shrink-0"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                >
                   <Mail className="w-6 h-6" />
-                </div>
+                </motion.div>
                 <div>
                   <h3 className="font-semibold text-lg">E-mail</h3>
                   <p className="text-primary-foreground/80">contato@rapimed.com.br</p>
                 </div>
-              </div>
+              </motion.div>
 
 
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-lg bg-white/10 shrink-0">
+              <motion.div
+                className="flex items-start gap-4"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+              >
+                <motion.div
+                  className="p-3 rounded-lg bg-white/10 shrink-0"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                >
                   <MapPin className="w-6 h-6" />
-                </div>
+                </motion.div>
                 <div>
                   <h3 className="font-semibold text-lg">Endereço</h3>
                   <p className="text-primary-foreground/80">Atendimento em todo o Brasil</p>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
 

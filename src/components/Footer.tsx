@@ -1,6 +1,7 @@
 import { Phone, Mail } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import logo from "@/assets/rapimed-logo.png";
 
 const menuLinks = [
@@ -38,17 +39,22 @@ export function Footer() {
               Especialistas em gestão de escalas, protocolos clínicos e educação continuada. Referência em governança clínica para municípios e hospitais.
             </p>
             <div className="flex gap-2">
-              {socialLinks.map((social) => (
-                <a
+              {socialLinks.map((social, index) => (
+                <motion.a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-primary transition-all duration-300"
                   aria-label={social.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ scale: 1.15, rotate: 5 }}
                 >
                   <social.icon className="w-4 h-4" />
-                </a>
+                </motion.a>
               ))}
             </div>
           </div>
@@ -57,16 +63,23 @@ export function Footer() {
           <div className="lg:justify-self-center">
             <h4 className="text-lg font-bold mb-4 uppercase tracking-wide">Menu</h4>
             <ul className="space-y-2">
-              {menuLinks.map((link) => (
-                <li key={link.label} className="flex items-center gap-2">
+              {menuLinks.map((link, index) => (
+                <motion.li
+                  key={link.label}
+                  className="flex items-center gap-2"
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                >
                   <span className="text-white/50">›</span>
                   <Link
                     to={link.href}
-                    className="text-white/90 hover:text-white transition-colors text-base font-medium"
+                    className="text-white/90 hover:text-white transition-colors text-base font-medium hover:translate-x-1 inline-block"
                   >
                     {link.label}
                   </Link>
-                </li>
+                </motion.li>
               ))}
             </ul>
           </div>
@@ -75,16 +88,23 @@ export function Footer() {
           <div>
             <h4 className="text-lg font-bold mb-4 uppercase tracking-wide">Soluções</h4>
             <ul className="space-y-2">
-              {solucoesLinks.map((link) => (
-                <li key={link.label} className="flex items-center gap-2">
+              {solucoesLinks.map((link, index) => (
+                <motion.li
+                  key={link.label}
+                  className="flex items-center gap-2"
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                >
                   <span className="text-white/50">›</span>
                   <Link
                     to={link.href}
-                    className="text-white/90 hover:text-white transition-colors text-base font-medium"
+                    className="text-white/90 hover:text-white transition-colors text-base font-medium hover:translate-x-1 inline-block"
                   >
                     {link.label}
                   </Link>
-                </li>
+                </motion.li>
               ))}
             </ul>
           </div>

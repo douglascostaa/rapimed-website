@@ -20,19 +20,20 @@ export default function Careers() {
                 <div id="contact-form" className="sr-only"></div>
 
                 {/* Hero Section */}
-                <section className="relative min-h-[600px] flex items-center overflow-hidden">
+                <section className="relative min-h-[450px] md:min-h-[600px] flex items-center overflow-hidden">
                     {/* Background Image */}
                     <div className="absolute inset-0 z-0">
                         <img
                             src="/images/diverse-medical-team-of-doctors-looking-at-camera-UW9F7DT.webp"
                             alt="Equipe médica"
-                            className="w-full h-full object-cover object-left-top"
+                            className="w-full h-full object-cover md:object-left-top"
+                            style={{ objectPosition: '15% center' }}
                             onError={(e) => {
                                 e.currentTarget.src = "diverse-medical-team-of-doctors-looking-at-camera-UW9F7DT.webp"
                             }}
                         />
-                        {/* Teal Overlay Gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#2a6365]/90 via-[#2a6365]/70 to-transparent" />
+                        {/* Teal Overlay Gradient - stronger on mobile */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#2a6365] via-[#2a6365]/90 via-60% to-[#2a6365]/40 md:from-[#2a6365]/90 md:via-[#2a6365]/70 md:via-50% md:to-transparent" />
                     </div>
 
                     <div className="container mx-auto px-4 relative z-10 py-20">
@@ -43,7 +44,7 @@ export default function Careers() {
                             className="max-w-2xl text-white"
                         >
                             <span className="font-medium text-lg mb-2 block text-white/90 italic">vagas abertas</span>
-                            <h1 className="text-4xl md:text-5xl lg:text-4,5xl font-bold mb-6 leading-tight">
+                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
                                 Junte-se ao corpo clínico de elite da Rapimed.
                             </h1>
                             <p className="text-lg text-white/90 mb-8 max-w-xl leading-relaxed">
@@ -52,15 +53,7 @@ export default function Careers() {
                                 realmente importa: o cuidado com o paciente.
                             </p>
 
-                            <Button
-                                size="xl"
-                                className="bg-[#009999] hover:bg-[#008080] text-white font-bold px-8 py-6 text-lg rounded shadow-lg uppercase tracking-wide"
-                                onClick={() => {
-                                    window.open("https://portal.rapimed.com.br/vagas", "_blank");
-                                }}
-                            >
-                                Quero me candidatar
-                            </Button>
+
                         </motion.div>
                     </div>
                 </section>
@@ -87,10 +80,18 @@ export default function Careers() {
 
                                 <div className="grid sm:grid-cols-2 gap-4 mb-10">
                                     {benefits.map((item, index) => (
-                                        <div key={index} className="flex items-center gap-3">
+                                        <motion.div
+                                            key={index}
+                                            className="flex items-center gap-3 cursor-pointer"
+                                            initial={{ opacity: 0, x: -20 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: index * 0.1 }}
+                                            whileHover={{ x: 5 }}
+                                        >
                                             <CheckCircle2 className="w-6 h-6 text-[#008080] shrink-0" />
                                             <span className="font-bold text-gray-800">{item}</span>
-                                        </div>
+                                        </motion.div>
                                     ))}
                                 </div>
 
@@ -113,9 +114,17 @@ export default function Careers() {
                                 className="relative"
                             >
                                 {/* Decorative background shape */}
-                                <div className="absolute -inset-4 bg-gray-100/50 rounded-[40px] -z-10 transform rotate-2" />
+                                <motion.div
+                                    className="absolute -inset-4 bg-gray-100/50 rounded-[40px] -z-10"
+                                    animate={{ rotate: [2, -1, 2] }}
+                                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                                />
 
-                                <div className="relative rounded-[32px] overflow-hidden shadow-2xl">
+                                <motion.div
+                                    className="relative rounded-[32px] overflow-hidden shadow-2xl"
+                                    whileHover={{ scale: 1.02 }}
+                                    transition={{ duration: 0.3 }}
+                                >
                                     <img
                                         src="/images/bearded-serious-doctor-or-intern-in-uniform-making-2026-01-08-23-52-44-utc.JPG"
                                         alt="Equipe reunida"
@@ -124,7 +133,7 @@ export default function Careers() {
                                             e.currentTarget.src = "bearded-serious-doctor-or-intern-in-uniform-making-2026-01-08-23-52-44-utc.JPG"
                                         }}
                                     />
-                                </div>
+                                </motion.div>
                             </motion.div>
                         </div>
                     </div>

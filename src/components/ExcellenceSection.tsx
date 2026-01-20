@@ -13,9 +13,9 @@ export function ExcellenceSection() {
     ];
 
     return (
-        <section className="py-20 bg-gradient-to-br from-[#e6f7f5] to-white relative overflow-hidden">
+        <section className="py-12 md:py-20 bg-gradient-to-br from-[#e6f7f5] to-white relative overflow-hidden">
             <div className="container mx-auto px-4">
-                <div className="grid lg:grid-cols-2 gap-16 items-center">
+                <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                     {/* Content Side */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
@@ -36,12 +36,20 @@ export function ExcellenceSection() {
 
                         <div className="grid sm:grid-cols-2 gap-4 mb-10">
                             {benefits.map((item, index) => (
-                                <div key={index} className="flex items-center gap-2">
+                                <motion.div
+                                    key={index}
+                                    className="flex items-center gap-2"
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.1 + index * 0.1 }}
+                                    whileHover={{ x: 5 }}
+                                >
                                     <div className="bg-[#2a6365] rounded-full p-1">
                                         <CheckCircle2 className="w-4 h-4 text-white" />
                                     </div>
                                     <span className="font-bold text-gray-800 text-sm md:text-base">{item}</span>
-                                </div>
+                                </motion.div>
                             ))}
                         </div>
 
@@ -73,7 +81,14 @@ export function ExcellenceSection() {
                         </div>
 
                         {/* Floating '5 Anos' Card */}
-                        <div className="absolute -bottom-6 -left-6 lg:-bottom-10 lg:-left-10 bg-[#2a6365] p-6 lg:p-8 rounded-2xl shadow-2xl max-w-xs">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.4, type: "spring", stiffness: 100 }}
+                            whileHover={{ scale: 1.05, y: -5 }}
+                            className="absolute -bottom-6 -left-6 lg:-bottom-10 lg:-left-10 bg-[#2a6365] p-6 lg:p-8 rounded-2xl shadow-2xl max-w-xs cursor-pointer"
+                        >
                             <div className="flex items-center gap-4">
                                 <div className="text-center border-r border-white/30 pr-4">
                                     <span className="block text-4xl lg:text-5xl font-bold text-white">5</span>
@@ -85,7 +100,7 @@ export function ExcellenceSection() {
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </motion.div>
                 </div>
             </div>

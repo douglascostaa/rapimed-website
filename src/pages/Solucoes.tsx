@@ -127,7 +127,7 @@ function SolutionSection({
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="py-20 relative overflow-hidden">
+    <section ref={ref} className="py-12 md:py-20 relative overflow-hidden">
       {/* Background decoration */}
       <div className={`absolute inset-0 bg-gradient-to-br ${gradientColor} opacity-5`} />
 
@@ -178,7 +178,7 @@ function SolutionSection({
               <img
                 src={imageUrl}
                 alt={title}
-                className="w-full h-[400px] object-cover"
+                className="w-full h-[300px] md:h-[400px] object-cover"
               />
               <div className={`absolute inset-0 bg-gradient-to-t ${gradientColor} opacity-40`} />
             </div>
@@ -228,7 +228,7 @@ export default function Solucoes() {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative min-h-[500px] flex items-center overflow-hidden"
+        className="relative min-h-[400px] md:min-h-[500px] flex items-center overflow-hidden"
       >
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
@@ -246,7 +246,7 @@ export default function Solucoes() {
             initial={{ opacity: 0, y: 30 }}
             animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="max-w-[45%]"
+            className="max-w-full md:max-w-[70%] lg:max-w-[45%]"
           >
             <span className="font-medium text-lg mb-2 block text-white/90 italic">
               soluções
@@ -291,7 +291,7 @@ export default function Solucoes() {
         subtitle="Eixos estratégicos de governança e fluxo:"
         items={protocolos}
         imageUrl="/images/photo-1576091160550-2173dba999ef.jfif"
-        gradientColor="from-accent to-amber-600"
+        gradientColor="from-[#30979b] to-[#257578]"
         reversed
       />
 
