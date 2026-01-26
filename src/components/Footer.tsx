@@ -23,7 +23,7 @@ const socialLinks = [
   { icon: FaFacebookF, href: "https://www.facebook.com/rapimedsaude/", label: "Facebook" },
   { icon: FaInstagram, href: "https://www.instagram.com/rapimedsaude/", label: "Instagram" },
   { icon: FaLinkedinIn, href: "http://br.linkedin.com/company/rapimed", label: "LinkedIn" },
-  { icon: FaWhatsapp, href: "https://wa.me/5551998210110", label: "WhatsApp" },
+  { icon: FaWhatsapp, href: "https://wa.me/5551933001875", label: "WhatsApp" },
 ];
 
 export function Footer() {
@@ -115,7 +115,7 @@ export function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="tel:5199524-8614"
+                  href="tel:5193300-1875"
                   className="flex items-start gap-3 text-white hover:opacity-80 transition-colors"
                 >
                   <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0">
@@ -123,7 +123,7 @@ export function Footer() {
                   </div>
                   <div>
                     <span className="block text-sm text-white">Telefone</span>
-                    <span className="font-light text-white">(51) 99524-8614</span>
+                    <span className="font-light text-white">(51) 93300-1875</span>
                   </div>
                 </a>
               </li>

@@ -9,8 +9,8 @@ const socialLinks = [
     { icon: FaFacebookF, href: "https://www.facebook.com/rapimedsaude/", label: "Facebook" },
     { icon: FaInstagram, href: "https://www.instagram.com/rapimedsaude/", label: "Instagram" },
     { icon: FaLinkedinIn, href: "http://br.linkedin.com/company/rapimed", label: "LinkedIn" },
-    { icon: FaWhatsapp, href: "https://wa.me/5551998210110", label: "WhatsApp" },
-    { icon: FaPhone, href: "tel:5199524-8614", label: "Telefone" },
+    { icon: FaWhatsapp, href: "https://wa.me/5551933001875", label: "WhatsApp" },
+    { icon: FaPhone, href: "tel:5193300-1875", label: "Telefone" },
     { icon: FaEnvelope, href: "mailto:contato@rapimed.com.br", label: "Email" },
 ];
 
@@ -35,80 +35,75 @@ export function ContactPageHero() {
             </div>
 
             <div className="container mx-auto px-4 relative z-10 py-16">
-                <div className="grid lg:grid-cols-2 gap-8">
-                    {/* Left side - Empty (image shows through) */}
-                    <div className="hidden lg:block" />
-
-                    {/* Right side - Form Card */}
+                <div className="w-full max-w-5xl mx-auto">
+                    {/* Form Card */}
                     <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="bg-white rounded-3xl shadow-2xl p-8 lg:p-10"
+                        className="bg-white rounded-3xl shadow-2xl p-6 md:p-8 lg:p-12 w-full max-w-2xl mx-auto"
                     >
-                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                            Entre em contato
+                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 text-center">
+                            Transforme a Gestão do seu Hospital Hoje
                         </h2>
-                        <p className="text-gray-500 mb-6">
-                            Entre em contato conosco para <span className="underline">quaisquer dúvidas</span>,{" "}
-                            <span className="underline">agendamentos ou solicitações</span>. Nossa equipe está{" "}
-                            <span className="underline">pronta</span> para te atender.
+                        <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-8 text-center leading-relaxed">
+                            Agende um <span className="underline font-medium">diagnóstico gratuito</span> com nossos especialistas e descubra onde você está <span className="underline font-medium">perdendo dinheiro</span>.
                         </p>
 
                         {/* Social Icons */}
-                        <div className="flex gap-3 mb-8">
+                        <div className="grid grid-cols-3 gap-4 md:flex md:gap-4 justify-center justify-items-center mb-10">
                             {socialLinks.map((social) => (
                                 <a
                                     key={social.label}
                                     href={social.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-10 h-10 rounded-full bg-[#2a6365] flex items-center justify-center text-white hover:bg-[#1f4e50] transition-colors"
+                                    className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#2a6365] flex items-center justify-center text-white hover:bg-[#1f4e50] transition-all touch-manipulation shadow-sm hover:scale-110"
                                     aria-label={social.label}
                                 >
-                                    <social.icon className="w-4 h-4" />
+                                    <social.icon className="w-5 h-5 md:w-6 md:h-6" />
                                 </a>
                             ))}
                         </div>
 
                         {/* Form */}
-                        <form className="space-y-4">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <form className="space-y-5">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                 <Input
                                     placeholder="Nome"
-                                    className="bg-white border-gray-200 rounded-lg h-12"
+                                    className="bg-white border-gray-200 rounded-lg h-12 md:h-14 text-base px-4 focus:ring-[#2a6365]/20 focus:border-[#2a6365]"
                                 />
                                 <Input
                                     placeholder="Telefone"
-                                    className="bg-white border-gray-200 rounded-lg h-12"
+                                    className="bg-white border-gray-200 rounded-lg h-12 md:h-14 text-base px-4 focus:ring-[#2a6365]/20 focus:border-[#2a6365]"
                                 />
                             </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                 <Input
                                     type="email"
                                     placeholder="E-mail"
-                                    className="bg-white border-gray-200 rounded-lg h-12"
+                                    className="bg-white border-gray-200 rounded-lg h-12 md:h-14 text-base px-4 focus:ring-[#2a6365]/20 focus:border-[#2a6365]"
                                 />
                                 <Input
                                     placeholder="Cidade"
-                                    className="bg-white border-gray-200 rounded-lg h-12"
+                                    className="bg-white border-gray-200 rounded-lg h-12 md:h-14 text-base px-4 focus:ring-[#2a6365]/20 focus:border-[#2a6365]"
                                 />
                             </div>
                             <Textarea
                                 placeholder="Mensagem"
-                                className="min-h-[120px] bg-white border-gray-200 rounded-lg resize-none"
+                                className="min-h-[140px] bg-white border-gray-200 rounded-lg resize-none text-base p-4 focus:ring-[#2a6365]/20 focus:border-[#2a6365]"
                             />
                             <Button
                                 size="lg"
-                                className="w-full bg-[#2a6365] hover:bg-[#1f4e50] text-white font-bold uppercase tracking-wider h-12"
+                                className="w-full bg-[#2a6365] hover:bg-[#1f4e50] text-white font-bold uppercase tracking-wider h-14 md:text-lg shadow-lg hover:shadow-xl transition-all"
                             >
-                                Enviar
+                                Solicitar Diagnóstico Gratuito
                             </Button>
                         </form>
                     </motion.div>
                 </div>
             </div>
-        </section>
+        </section >
     );
 }

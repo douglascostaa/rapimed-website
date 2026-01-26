@@ -67,9 +67,7 @@ export function HeroSection() {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-gray-500 text-base md:text-lg mb-10 leading-relaxed"
           >
-            Atuamos em todo o Brasil transformando a saúde hospitalar e municipal com
-            escalas 100% cobertas, protocolos baseados em IA e capacitação contínua do corpo
-            clínico.
+            Atuamos em todo o Brasil transformando a saúde hospitalar e municipal com escalas 100% cobertas, protocolos baseados em IA e capacitação contínua do corpo clínico.
           </motion.p>
 
           {/* Feature Cards */}
@@ -88,7 +86,7 @@ export function HeroSection() {
                 </div>
                 <div>
                   <h3 className="font-bold italic text-gray-900 mb-1 group-hover:text-[#2a6365] transition-colors">
-                    Conheça as Soluções
+                    Quero Otimizar Minha Gestão
                   </h3>
                   <p className="text-sm text-gray-500 leading-snug">
                     Descubra como eliminamos furos em escalas e reduzimos custos operacionais.
@@ -111,7 +109,7 @@ export function HeroSection() {
                 </div>
                 <div>
                   <h3 className="font-bold italic text-gray-900 mb-1 group-hover:text-[#2a6365] transition-colors">
-                    Carreira Médica
+                    Sou Médico e busco vagas
                   </h3>
                   <p className="text-sm text-gray-500 leading-snug">
                     Venha fazer parte de um corpo clínico de elite com suporte tecnológico e gestão eficiente.

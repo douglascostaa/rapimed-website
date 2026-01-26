@@ -41,7 +41,7 @@ export function ContactSection() {
                 </motion.div>
                 <div>
                   <h3 className="font-semibold text-lg">Telefone</h3>
-                  <p className="text-primary-foreground/80">(51) 99524-8614</p>
+                  <p className="text-primary-foreground/80">(51) 93300-1875</p>
                 </div>
               </motion.div>
 

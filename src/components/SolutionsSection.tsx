@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { 
-  Stethoscope, 
-  Shield, 
-  GraduationCap, 
+import {
+  Stethoscope,
+  Shield,
+  GraduationCap,
   ArrowRight,
   ChevronDown,
   ChevronUp
@@ -14,20 +14,20 @@ import {
 const solutions = [
   {
     icon: Stethoscope,
-    title: "Serviços Médicos",
-    description: "Dimensionamento de equipe conforme demanda real, gestão de escalas e liderança de turno para garantir fluidez operacional.",
+    title: "Escala 100% Coberta",
+    description: "Nunca mais sofra com ausências de última hora. Nossa gestão inteligente elimina furos e garante plantões sempre completos.",
     color: "from-primary to-primary-dark",
   },
   {
     icon: Shield,
-    title: "Protocolos e Governança",
-    description: "Implementação de diretrizes clínicas para síndromes tempo-sensíveis (AVC, Sepse, Infarto), garantindo agilidade e racionalização de custos.",
+    title: "ROI de até 250%",
+    description: "Reduza gastos com horas extras emergenciais e desperdícios operacionais. Economia previsível para o seu orçamento.",
     color: "from-accent to-amber-600",
   },
   {
     icon: GraduationCap,
-    title: "Educação Continuada",
-    description: "Programas de atualização e simulações realísticas para validar competências críticas e reduzir eventos adversos.",
+    title: "Corpo Clínico de Elite",
+    description: "Profissionais rigorosamente selecionados e capacitados, garantindo segurança e excelência no atendimento ao paciente.",
     color: "from-emerald-500 to-teal-600",
   },
 ];
@@ -57,7 +57,7 @@ export function SolutionsSection() {
               <span className="gradient-text">Rapimed?</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Unimos tecnologia de ponta, gestão disciplinada e corpo clínico 
+              Unimos tecnologia de ponta, gestão disciplinada e corpo clínico
               qualificado para elevar o padrão assistencial da sua unidade de saúde.
             </p>
 
@@ -90,10 +90,10 @@ export function SolutionsSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.3 + index * 0.1 }}
-                className={`bg-card rounded-2xl border border-border overflow-hidden transition-all duration-300 ${
-                  expandedIndex === index ? "shadow-lg border-primary/30" : "hover:shadow-md"
-                }`}
+                className={`bg-card rounded-2xl border border-border overflow-hidden relative group transition-all duration-300 hover:shadow-lg hover:scale-105 hover:-translate-y-1 ${expandedIndex === index ? "shadow-lg border-primary/30" : "hover:shadow-md"
+                  }`}
               >
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#2a6365] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <button
                   onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
                   className="w-full p-6 flex items-center gap-4 text-left"
@@ -112,7 +112,7 @@ export function SolutionsSection() {
                     )}
                   </div>
                 </button>
-                
+
                 <motion.div
                   initial={false}
                   animate={{

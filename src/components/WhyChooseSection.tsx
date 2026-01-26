@@ -99,9 +99,10 @@ export function WhyChooseSection() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                                     transition={{ delay: 0.3 + index * 0.1 }}
-                                    className={`bg-white rounded-2xl border border-gray-100 overflow-hidden transition-all duration-300 ${expandedIndex === index ? "shadow-lg border-[#2a6365]/30" : "hover:shadow-md"
+                                    className={`bg-white rounded-2xl border border-gray-100 overflow-hidden relative group transition-all duration-300 hover:shadow-xl hover:scale-[1.02] hover:-translate-y-1 ${expandedIndex === index ? "shadow-lg border-[#2a6365]/30" : "hover:shadow-md"
                                         }`}
                                 >
+                                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#2a6365] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                                     <button
                                         onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
                                         className="w-full p-5 flex items-center gap-4 text-left"

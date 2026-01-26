@@ -78,15 +78,12 @@ export default function About() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.1 }}
-                                whileHover={{ y: -8, scale: 1.02 }}
-                                className="bg-background p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                                className="bg-background p-8 rounded-xl shadow-md transition-all duration-300 hover:shadow-lg hover:scale-105 hover:-translate-y-1 cursor-pointer relative group overflow-hidden"
                             >
-                                <motion.div
-                                    className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6"
-                                    whileHover={{ scale: 1.15, rotate: 10 }}
-                                >
+                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#2a6365] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110">
                                     <Rocket className="w-6 h-6 text-primary" />
-                                </motion.div>
+                                </div>
                                 <h3 className="text-xl font-bold mb-4">Missão</h3>
                                 <p className="text-muted-foreground">
                                     Levar equipes seguras e soluções em saúde de forma rápida e qualificada para as regiões Sul e Sudeste do Brasil.
@@ -99,15 +96,12 @@ export default function About() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2 }}
-                                whileHover={{ y: -8, scale: 1.02 }}
-                                className="bg-background p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                                className="bg-background p-8 rounded-xl shadow-md transition-all duration-300 hover:shadow-lg hover:scale-105 hover:-translate-y-1 cursor-pointer relative group overflow-hidden"
                             >
-                                <motion.div
-                                    className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6"
-                                    whileHover={{ scale: 1.15, rotate: 10 }}
-                                >
+                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#2a6365] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110">
                                     <Target className="w-6 h-6 text-primary" />
-                                </motion.div>
+                                </div>
                                 <h3 className="text-xl font-bold mb-4">Visão</h3>
                                 <p className="text-muted-foreground">
                                     Triplicar o número de horas de atendimento até dezembro de 2026.
@@ -120,15 +114,12 @@ export default function About() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.3 }}
-                                whileHover={{ y: -8, scale: 1.02 }}
-                                className="bg-background p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                                className="bg-background p-8 rounded-xl shadow-md transition-all duration-300 hover:shadow-lg hover:scale-105 hover:-translate-y-1 cursor-pointer relative group overflow-hidden"
                             >
-                                <motion.div
-                                    className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6"
-                                    whileHover={{ scale: 1.15, rotate: 10 }}
-                                >
+                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#2a6365] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110">
                                     <Award className="w-6 h-6 text-primary" />
-                                </motion.div>
+                                </div>
                                 <h3 className="text-xl font-bold mb-4">Valores</h3>
                                 <p className="text-muted-foreground">
                                     Responsabilidade, agilidade, qualidade, ética e senso de dono.
@@ -141,15 +132,12 @@ export default function About() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.4 }}
-                                whileHover={{ y: -8, scale: 1.02 }}
-                                className="bg-background p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                                className="bg-background p-8 rounded-xl shadow-md transition-all duration-300 hover:shadow-lg hover:scale-105 hover:-translate-y-1 cursor-pointer relative group overflow-hidden"
                             >
-                                <motion.div
-                                    className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6"
-                                    whileHover={{ scale: 1.15, rotate: 10 }}
-                                >
+                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#2a6365] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110">
                                     <Heart className="w-6 h-6 text-primary" />
-                                </motion.div>
+                                </div>
                                 <h3 className="text-xl font-bold mb-4">Propósito</h3>
                                 <p className="text-muted-foreground">
                                     Levar saúde de qualidade a milhares de pessoas, assim como entregar inteligência estratégica para os gestores públicos e privados, com segurança, tranquilidade, agilidade e organização.
@@ -167,6 +155,6 @@ export default function About() {
 
             </main>
             <Footer />
-        </div>
+        </div >
     );
 }
