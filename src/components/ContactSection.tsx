@@ -1,10 +1,38 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Send, Loader2, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { sendMail } from "@/lib/mail";
+import { toast } from "sonner";
 
 export function ContactSection() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      message: formData.get("message") as string,
+    };
+
+    try {
+      await sendMail("contact", data);
+      setIsSuccess(true);
+      toast.success("Mensagem enviada com sucesso!");
+    } catch (error) {
+      toast.error("Erro ao enviar. Tente novamente.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contato" className="py-20 bg-background relative overflow-hidden">
       {/* Background decoration */}
@@ -88,37 +116,57 @@ export function ContactSection() {
 
           {/* Form Side */}
           <div className="lg:col-span-3 p-10 bg-white dark:bg-zinc-900">
-            <form className="space-y-6 h-full flex flex-col justify-center">
-              <div className="space-y-2">
-                <label htmlFor="name" className="text-sm font-medium text-foreground">
-                  Nome Completo
-                </label>
-                <Input id="name" placeholder="Digite seu nome" className="bg-secondary/50" />
+            {isSuccess ? (
+              <div className="flex flex-col items-center justify-center h-full text-center space-y-4">
+                <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
+                  <CheckCircle2 className="w-8 h-8" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900">Mensagem Enviada!</h3>
+                <p className="text-gray-500 max-w-md">
+                  Obrigado pelo contato. Retornaremos em breve.
+                </p>
+                <Button variant="outline" onClick={() => setIsSuccess(false)} className="mt-6">
+                  Enviar nova mensagem
+                </Button>
               </div>
+            ) : (
+              <form className="space-y-6 h-full flex flex-col justify-center" onSubmit={handleSubmit}>
+                <div className="space-y-2">
+                  <label htmlFor="name" className="text-sm font-medium text-foreground">
+                    Nome Completo
+                  </label>
+                  <Input id="name" name="name" required placeholder="Digite seu nome" className="bg-secondary/50" />
+                </div>
 
-              <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-medium text-foreground">
-                  E-mail Profissional
-                </label>
-                <Input id="email" type="email" placeholder="Digite seu e-mail" className="bg-secondary/50" />
-              </div>
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-medium text-foreground">
+                    E-mail Profissional
+                  </label>
+                  <Input id="email" name="email" type="email" required placeholder="Digite seu e-mail" className="bg-secondary/50" />
+                </div>
 
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium text-foreground">
-                  Mensagem
-                </label>
-                <Textarea
-                  id="message"
-                  placeholder="Como podemos ajudar?"
-                  className="min-h-[80px] bg-secondary/50 resize-none"
-                />
-              </div>
+                <div className="space-y-2">
+                  <label htmlFor="message" className="text-sm font-medium text-foreground">
+                    Mensagem
+                  </label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    required
+                    placeholder="Como podemos ajudar?"
+                    className="min-h-[80px] bg-secondary/50 resize-none"
+                  />
+                </div>
 
-              <Button size="lg" className="w-full">
-                Enviar Mensagem
-                <Send className="w-4 h-4 ml-2" />
-              </Button>
-            </form>
+                <Button size="lg" className="w-full" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <>Enviando... <Loader2 className="w-4 h-4 ml-2 animate-spin" /></>
+                  ) : (
+                    <>Enviar Mensagem <Send className="w-4 h-4 ml-2" /></>
+                  )}
+                </Button>
+              </form>
+            )}
           </div>
         </div>
       </div>

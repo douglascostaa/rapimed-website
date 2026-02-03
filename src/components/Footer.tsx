@@ -11,6 +11,7 @@ const menuLinks = [
   { label: "contato", href: "/contato" },
   { label: "portal do sócio", href: "#" },
   { label: "vagas abertas", href: "/vagas" },
+  { label: "ouvidoria", href: "/ouvidoria" },
 ];
 
 const solucoesLinks = [
@@ -170,8 +171,8 @@ export function Footer() {
 
             {/* Right - Links */}
             <div className="flex gap-4">
-              <a href="#" className="text-white hover:opacity-80 transition-colors">Política de Privacidade</a>
-              <a href="#" className="text-white hover:opacity-80 transition-colors">Termos de Uso</a>
+              <Link to="/privacidade" className="text-white hover:opacity-80 transition-colors">Política de Privacidade</Link>
+              <Link to="/termos" className="text-white hover:opacity-80 transition-colors">Termos de Uso</Link>
             </div>
           </div>
         </div>

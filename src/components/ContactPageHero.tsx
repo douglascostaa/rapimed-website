@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp, FaPhone, FaEnvelope } from "react-icons/fa";
+import { Loader2, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { sendMail } from "@/lib/mail";
+import { toast } from "sonner";
 
 const socialLinks = [
     { icon: FaFacebookF, href: "https://www.facebook.com/rapimedsaude/", label: "Facebook" },
@@ -15,6 +18,33 @@ const socialLinks = [
 ];
 
 export function ContactPageHero() {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        const formData = new FormData(e.currentTarget);
+        const data = {
+            name: formData.get("name") as string,
+            phone: formData.get("phone") as string,
+            email: formData.get("email") as string,
+            city: formData.get("city") as string,
+            message: formData.get("message") as string,
+        };
+
+        try {
+            await sendMail("contact", data);
+            setIsSuccess(true);
+            toast.success("Solicitação enviada com sucesso!");
+        } catch (error) {
+            toast.error("Erro ao enviar. Tente novamente.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <section className="relative min-h-[600px] md:min-h-[700px] flex items-center overflow-hidden pt-20">
             {/* Background with image positioned to the left */}
@@ -68,39 +98,67 @@ export function ContactPageHero() {
                         </div>
 
                         {/* Form */}
-                        <form className="space-y-5">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                <Input
-                                    placeholder="Nome"
-                                    className="bg-white border-gray-200 rounded-lg h-12 md:h-14 text-base px-4 focus:ring-[#2a6365]/20 focus:border-[#2a6365]"
-                                />
-                                <Input
-                                    placeholder="Telefone"
-                                    className="bg-white border-gray-200 rounded-lg h-12 md:h-14 text-base px-4 focus:ring-[#2a6365]/20 focus:border-[#2a6365]"
-                                />
+                        {isSuccess ? (
+                            <div className="flex flex-col items-center justify-center py-8 text-center space-y-4">
+                                <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
+                                    <CheckCircle2 className="w-8 h-8" />
+                                </div>
+                                <h3 className="text-2xl font-bold text-gray-900">Solicitação Enviada!</h3>
+                                <p className="text-gray-500 max-w-md">
+                                    Recebemos seu pedido de diagnóstico. Nossos especialistas entrarão em contato em breve.
+                                </p>
+                                <Button variant="outline" onClick={() => setIsSuccess(false)} className="mt-6">
+                                    Nova solicitação
+                                </Button>
                             </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                <Input
-                                    type="email"
-                                    placeholder="E-mail"
-                                    className="bg-white border-gray-200 rounded-lg h-12 md:h-14 text-base px-4 focus:ring-[#2a6365]/20 focus:border-[#2a6365]"
+                        ) : (
+                            <form className="space-y-5" onSubmit={handleSubmit}>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    <Input
+                                        name="name"
+                                        required
+                                        placeholder="Nome"
+                                        className="bg-white border-gray-200 rounded-lg h-12 md:h-14 text-base px-4 focus:ring-[#2a6365]/20 focus:border-[#2a6365]"
+                                    />
+                                    <Input
+                                        name="phone"
+                                        required
+                                        placeholder="Telefone"
+                                        className="bg-white border-gray-200 rounded-lg h-12 md:h-14 text-base px-4 focus:ring-[#2a6365]/20 focus:border-[#2a6365]"
+                                    />
+                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    <Input
+                                        type="email"
+                                        name="email"
+                                        required
+                                        placeholder="E-mail"
+                                        className="bg-white border-gray-200 rounded-lg h-12 md:h-14 text-base px-4 focus:ring-[#2a6365]/20 focus:border-[#2a6365]"
+                                    />
+                                    <Input
+                                        name="city"
+                                        placeholder="Cidade"
+                                        className="bg-white border-gray-200 rounded-lg h-12 md:h-14 text-base px-4 focus:ring-[#2a6365]/20 focus:border-[#2a6365]"
+                                    />
+                                </div>
+                                <Textarea
+                                    name="message"
+                                    placeholder="Mensagem"
+                                    className="min-h-[140px] bg-white border-gray-200 rounded-lg resize-none text-base p-4 focus:ring-[#2a6365]/20 focus:border-[#2a6365]"
                                 />
-                                <Input
-                                    placeholder="Cidade"
-                                    className="bg-white border-gray-200 rounded-lg h-12 md:h-14 text-base px-4 focus:ring-[#2a6365]/20 focus:border-[#2a6365]"
-                                />
-                            </div>
-                            <Textarea
-                                placeholder="Mensagem"
-                                className="min-h-[140px] bg-white border-gray-200 rounded-lg resize-none text-base p-4 focus:ring-[#2a6365]/20 focus:border-[#2a6365]"
-                            />
-                            <Button
-                                size="lg"
-                                className="w-full bg-[#2a6365] hover:bg-[#1f4e50] text-white font-bold uppercase tracking-wider h-14 md:text-lg shadow-lg hover:shadow-xl transition-all"
-                            >
-                                Solicitar Diagnóstico Gratuito
-                            </Button>
-                        </form>
+                                <Button
+                                    size="lg"
+                                    disabled={isSubmitting}
+                                    className="w-full bg-[#2a6365] hover:bg-[#1f4e50] text-white font-bold uppercase tracking-wider h-14 md:text-lg shadow-lg hover:shadow-xl transition-all"
+                                >
+                                    {isSubmitting ? (
+                                        <>Enviando... <Loader2 className="ml-2 w-5 h-5 animate-spin" /></>
+                                    ) : (
+                                        "Solicitar Diagnóstico Gratuito"
+                                    )}
+                                </Button>
+                            </form>
+                        )}
                     </motion.div>
                 </div>
             </div>

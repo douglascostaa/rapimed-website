@@ -11,6 +11,7 @@ const navLinks = [
   { label: "Soluções", href: "/solucoes" },
   { label: "Contato", href: "/contato" },
   { label: "Vagas Abertas", href: "/vagas" },
+  { label: "Ouvidoria", href: "/ouvidoria" },
 ];
 
 export function Header() {

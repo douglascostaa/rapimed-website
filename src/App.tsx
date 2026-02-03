@@ -9,9 +9,14 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Careers from "./pages/Careers";
 import NotFound from "./pages/NotFound";
+import Ouvidoria from "./pages/Ouvidoria";
 import { CookieConsent } from "@/components/CookieConsent";
+import TermsOfUse from "./pages/TermsOfUse";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const queryClient = new QueryClient();
+
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -19,12 +24,16 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/solucoes" element={<Solucoes />} />
           <Route path="/sobre" element={<About />} />
           <Route path="/contato" element={<Contact />} />
           <Route path="/vagas" element={<Careers />} />
+          <Route path="/ouvidoria" element={<Ouvidoria />} />
+          <Route path="/termos" element={<TermsOfUse />} />
+          <Route path="/privacidade" element={<PrivacyPolicy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
